@@ -1,7 +1,7 @@
 # GMTK-Game-2023-rr-
 
 
-## Ideas
+## Ideas 
 - Table board game
 - Dice shooting
 - Reverse Hotline Miami
