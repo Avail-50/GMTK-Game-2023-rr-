@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 5307613386654617086}
   - component: {fileID: 2317945743719252488}
   - component: {fileID: 798124773202394843}
-  - component: {fileID: 8114055308879976666}
   - component: {fileID: 2365114449798513780}
   - component: {fileID: 2444306031051532335}
   - component: {fileID: 5464873883147357281}
   - component: {fileID: 518050211710029466}
+  - component: {fileID: 6363915293016982387}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -180,22 +180,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8114055308879976666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070702438836119089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 095369cb3a8be024eaf1f2aaa031df89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bigCharacter: {fileID: 0}
-  force: 0
-  is_Selected: 0
-  speedspeedspeed: 5
 --- !u!58 &2365114449798513780
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -243,10 +227,10 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 257
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -300,3 +284,25 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6363915293016982387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070702438836119089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2fd434a62cadb4cb7e98d086a622d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bigCharacter: {fileID: 0}
+  force: 8
+  healthBar: {fileID: 0}
+  dealDamage: {fileID: 0}
+  attack: 1
+  maxHealth: 10
+  health: 10
+  is_Selected: 0
+  speedspeedspeed: 5
+  counter: 0
