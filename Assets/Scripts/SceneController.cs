@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class SceneController : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class SceneController : MonoBehaviour
     public RuleTile wallTile;
     public NavMeshPlus.Components.NavMeshSurface navMeshSurface;
 
-    //public pref navMeshSurface;
+    public GameObject playerPrefab;
 
     public int width;
     public int height;
@@ -24,6 +26,8 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int number_of_players = level + 4;
+
         map = new(width, height, seed, level, spaceX, spaceY);
         for (int x = 0; x < width; x++)
         {
@@ -36,6 +40,11 @@ public class SceneController : MonoBehaviour
             }
         }
         navMeshSurface.BuildNavMesh();
+        System.Random rand = new();
+        foreach (Vector2 playerSpawnPos in map.playerSpawnPoses.OrderBy(x => rand.Next()).Take(number_of_players))
+        {
+            Instantiate(playerPrefab, new Vector3(playerSpawnPos.x, playerSpawnPos.y, 0), Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
