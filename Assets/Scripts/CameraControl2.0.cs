@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-
+    
     public float speed;
     private float distance;
     public float scrollSpeed;
@@ -21,10 +21,29 @@ public class CameraMove : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
             float distanceChange = Input.GetAxis("Mouse ScrollWheel");
-            GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
+            float size = GetComponent<Camera>().orthographicSize;
+            if (distanceChange > 0 && size < 30)
+            {
+                GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
+            }
+            else if (distanceChange > 0 && size > 1)
+            {
+                GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
+            }
+            //GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
             
         }
 
+//        if (Input.GetButtonDown("Fire2"))
+//        {
+//            Vector3 mouseWorldPos = new(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
+//            if (Mathf.Abs((mouseWorldPos - GetComponent<EnemyMovement>().position).x) < 5 && Mathf.Abs((mouseWorldPos - GetComponent<EnemyMovement>().position).y) < 5)
+//            {
+//                GetComponent<EnemyMovement>().is_Selected = true;
+//
+//            }
+                
+//        }
         // allow the user to lock and unlock cursor from screen
         //if (Input.GetKey(KeyCode.Escape))
             //Cursor.lockState = CursorLockMode.None;
