@@ -36,7 +36,10 @@ public class CameraMove : MonoBehaviour
 
         upDown *= GetComponent<Camera>().orthographicSize * Time.deltaTime;
         leftRight *= GetComponent<Camera>().orthographicSize * Time.deltaTime;
-        transform.Translate(leftRight, upDown,0);
+        
+        Vector3 movement = new Vector3(leftRight, upDown, 0);
+        movement = Vector3.ClampMagnitude(movement, 1);
+        transform.Translate(movement);
 
 
     }
