@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
     public Transform bigCharacter;
     public int force;
     private Rigidbody2D rb2D;
+    private NavMeshAgent navMeshAgent;
     [SerializeField] FloatingHealth healthBar;
 
     [SerializeField] HeroController dealDamage;
@@ -37,6 +39,10 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         mouseWorldPos = transform.position;
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
         health = maxHealth;
     }
 
@@ -50,8 +56,10 @@ public class EnemyMovement : MonoBehaviour
         }
 
         //Debug.Log(mouseWorldPos);
-        transform.position = Vector3.MoveTowards(transform.position, mouseWorldPos, speedspeedspeed * Time.deltaTime);
+        //transform.position = Vector3.MoveTowards(transform.position, mouseWorldPos, speedspeedspeed * Time.deltaTime);
         //AddForce(Player.transform.forward)
+        navMeshAgent.SetDestination(mouseWorldPos);
+        navMeshAgent.speed = speedspeedspeed;// * Time.deltaTime;
 
         if (counter > 0)
             counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);

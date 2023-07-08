@@ -16,20 +16,13 @@ namespace Roguelike
         public int width;
         public int height;
 
+        public List<Vector2> playerSpawnPoses;
+
         public int seed;
         public int nextSeed;
         public int level;
 
         public Point end;
-
-        public Map(bool[,] tiles, int offsetX, int offsetY)
-        {
-            this.tiles = tiles;
-            width = tiles.GetLength(0);
-            height = tiles.GetLength(1);
-            this.offsetX = offsetX;
-            this.offsetY = offsetY;
-        }
 
         public List<Vector2> centres;
         public List<Tuple<int, int>> corridors; // remove eventually
@@ -40,6 +33,8 @@ namespace Roguelike
             this.height = height;
             offsetX = 0;//width / 2;
             offsetY = 0;//height / 2;
+
+            playerSpawnPoses = new();
 
             this.level = level;
             seed = this.seed = seed;
@@ -324,6 +319,7 @@ namespace Roguelike
                             rand.Next(3);
                             rand.Next(3);
                         }
+                        playerSpawnPoses.Add(new Vector2(enemy.X, enemy.Y));
                         //if (rand.Next(5) == 0) new Skeleton_Mage(enemy.x + 0.5f, enemy.y + 0.5f, rand.Next(3) == 0)
                         //{
                         //    originalRoom = acRoom,
