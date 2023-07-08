@@ -10,10 +10,14 @@
 
 # Saturday Plans
 - Procedural generation -- Harvey
-   - Enemy spawns
+   - Enemy spawns (fix)
    - PLathfin=ding?
 - Controls:
   - Right click to move
   - Left to attack
   - Modular controls
+  - Big character
+  - Attacking (finish)
+     - Health / death
+     - win condition
     
