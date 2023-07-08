@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-
+    
     public float speed;
     private float distance;
     public float scrollSpeed;
@@ -21,10 +21,22 @@ public class CameraMove : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
             float distanceChange = Input.GetAxis("Mouse ScrollWheel");
-            GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
+            float size = GetComponent<Camera>().orthographicSize;
+            GetComponent<Camera>().orthographicSize = Mathf.Clamp(size - distanceChange * scrollSpeed, 1, 30);
+            //GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
             
         }
 
+//        if (Input.GetButtonDown("Fire2"))
+//        {
+//            Vector3 mouseWorldPos = new(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
+//            if (Mathf.Abs((mouseWorldPos - GetComponent<EnemyMovement>().position).x) < 5 && Mathf.Abs((mouseWorldPos - GetComponent<EnemyMovement>().position).y) < 5)
+//            {
+//                GetComponent<EnemyMovement>().is_Selected = true;
+//
+//            }
+                
+//        }
         // allow the user to lock and unlock cursor from screen
         //if (Input.GetKey(KeyCode.Escape))
             //Cursor.lockState = CursorLockMode.None;
@@ -36,7 +48,10 @@ public class CameraMove : MonoBehaviour
 
         upDown *= GetComponent<Camera>().orthographicSize * Time.deltaTime;
         leftRight *= GetComponent<Camera>().orthographicSize * Time.deltaTime;
-        transform.Translate(leftRight, upDown,0);
+        
+        Vector3 movement = new Vector3(leftRight, upDown, 0);
+        movement = Vector3.ClampMagnitude(movement, 1);
+        transform.Translate(movement);
 
 
     }
