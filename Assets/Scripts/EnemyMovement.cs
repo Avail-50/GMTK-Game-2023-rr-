@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
     public Transform bigCharacter;
     public int force;
     private Rigidbody2D rb2D;
+    private NavMeshAgent navMeshAgent;
 
     //public CameraMove camera;
     
@@ -18,7 +20,11 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         mouseWorldPos = transform.position;
-}
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,8 +36,10 @@ public class EnemyMovement : MonoBehaviour
         }
 
         //Debug.Log(mouseWorldPos);
-        transform.position = Vector3.MoveTowards(transform.position, mouseWorldPos, speedspeedspeed * Time.deltaTime);
+        //transform.position = Vector3.MoveTowards(transform.position, mouseWorldPos, speedspeedspeed * Time.deltaTime);
         //AddForce(Player.transform.forward)
+        navMeshAgent.SetDestination(mouseWorldPos);
+        navMeshAgent.speed = speedspeedspeed;// * Time.deltaTime;
 
     }
 

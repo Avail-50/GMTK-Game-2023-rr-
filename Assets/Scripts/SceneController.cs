@@ -8,6 +8,9 @@ public class SceneController : MonoBehaviour
 {
     public Tilemap tilemap;
     public RuleTile wallTile;
+    public NavMeshPlus.Components.NavMeshSurface navMeshSurface;
+
+    //public pref navMeshSurface;
 
     public int width;
     public int height;
@@ -32,6 +35,7 @@ public class SceneController : MonoBehaviour
                 }   
             }
         }
+        navMeshSurface.BuildNavMesh();
     }
 
     // Update is called once per frame
