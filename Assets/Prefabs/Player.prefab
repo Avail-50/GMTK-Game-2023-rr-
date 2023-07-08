@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2317945743719252488}
   - component: {fileID: 798124773202394843}
   - component: {fileID: 8114055308879976666}
+  - component: {fileID: 2444306031051532335}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -188,3 +189,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095369cb3a8be024eaf1f2aaa031df89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  is_Selected: 0
+  speedspeedspeed: 0
+--- !u!58 &2444306031051532335
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070702438836119089}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
