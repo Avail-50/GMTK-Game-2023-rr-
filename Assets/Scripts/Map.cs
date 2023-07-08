@@ -33,7 +33,7 @@ namespace Roguelike
 
         public List<Vector2> centres;
         public List<Tuple<int, int>> corridors; // remove eventually
-        public Map(int width, int height, int seed, int level)
+        public Map(int width, int height, int seed, int level, int spaceX, int spaceY)
         {
             tiles = new bool[width, height];
             this.width = width;
@@ -51,8 +51,6 @@ namespace Roguelike
 
             int numrooms = (int)Mathf.Round(Gaussian(rand, 9, 1));
             Debug.Log("numrooms : " + numrooms); // DEBUG
-
-            int spaceX = 5, spaceY = 5;
 
             #region rooms
             List<Rectangle> rooms = new List<Rectangle>();
@@ -316,7 +314,16 @@ namespace Roguelike
                     if (enemy != default)
                     {
                         // spawn enemy
-
+                        if (rand.Next(5) == 0)
+                        {
+                            rand.Next(3);
+                        }
+                        else
+                        {
+                            rand.Next(3);
+                            rand.Next(3);
+                            rand.Next(3);
+                        }
                         //if (rand.Next(5) == 0) new Skeleton_Mage(enemy.x + 0.5f, enemy.y + 0.5f, rand.Next(3) == 0)
                         //{
                         //    originalRoom = acRoom,
@@ -342,11 +349,11 @@ namespace Roguelike
         {
             if (!centre.HasValue) centre = new Vector2(rect.Left + rect.Width / 2f, rect.Top + rect.Height / 2f);
             if (LineIntersectDistance(new Vector2(rect.Right, rect.Top), new Vector2(0, rect.Height / 2f), centre.Value, lineDelta, true).HasValue) return 0;
-            else if (LineIntersectDistance(new Vector2(rect.Right, rect.Top + rect.Height / 2f), new Vector2(rect.Height / 2f, 0), centre.Value, lineDelta, true).HasValue) return 1;
+            else if (LineIntersectDistance(new Vector2(rect.Right, rect.Top + rect.Height / 2f), new Vector2(0, rect.Height / 2f), centre.Value, lineDelta, true).HasValue) return 1;
             else if (LineIntersectDistance(new Vector2(rect.Right, rect.Bottom), new Vector2(-rect.Width / 2f, 0), centre.Value, lineDelta, true).HasValue) return 2;
             else if (LineIntersectDistance(new Vector2(rect.Right - rect.Width / 2f, rect.Bottom), new Vector2(-rect.Width / 2f, 0), centre.Value, lineDelta, true).HasValue) return 3;
-            else if (LineIntersectDistance(new Vector2(rect.Left, rect.Bottom), new Vector2(-rect.Height / 2f, 0), centre.Value, lineDelta, true).HasValue) return 4;
-            else if (LineIntersectDistance(new Vector2(rect.Left, rect.Bottom - rect.Height / 2f), new Vector2(-rect.Height / 2f, 0), centre.Value, lineDelta, true).HasValue) return 5;
+            else if (LineIntersectDistance(new Vector2(rect.Left, rect.Bottom), new Vector2(0, -rect.Height / 2f), centre.Value, lineDelta, true).HasValue) return 4;
+            else if (LineIntersectDistance(new Vector2(rect.Left, rect.Bottom - rect.Height / 2f), new Vector2(0, -rect.Height / 2f), centre.Value, lineDelta, true).HasValue) return 5;
             else if (LineIntersectDistance(new Vector2(rect.Left, rect.Top), new Vector2(rect.Width / 2f, 0), centre.Value, lineDelta, true).HasValue) return 6;
             else if (LineIntersectDistance(new Vector2(rect.Left + rect.Width / 2f, rect.Top), new Vector2(rect.Width / 2f, 0), centre.Value, lineDelta, true).HasValue) return 7;
             else return 8; // ?
