@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public CameraMove camera;
+    public Transform bigCharacter;
+    public int force;
+    private Rigidbody2D rb2D;
+
+    //public CameraMove camera;
     public bool is_Selected = false;
     private Vector3 mouseWorldPos;
     //public Vector3 position = transform.position;
@@ -24,8 +28,9 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log(mouseWorldPos);
         }
 
-        Debug.Log(mouseWorldPos);
+        //Debug.Log(mouseWorldPos);
         transform.position = Vector3.MoveTowards(transform.position, mouseWorldPos, speedspeedspeed * Time.deltaTime);
+        //AddForce(Player.transform.forward)
 
     }
 
@@ -45,4 +50,20 @@ public class EnemyMovement : MonoBehaviour
                 is_Selected = true;
         }
     }
+
+    void OnTriggerStay()
+    {
+        attack();
+    }
+
+    void attack()
+    {
+        Debug.Log("Attack");
+
+        //adds force to rigidbodies
+        Vector3 direction = bigCharacter.transform.position - transform.position;
+        direction.Normalize();
+        rb2D.AddForce(direction * force);
+    }
+
 }
