@@ -22,15 +22,8 @@ public class CameraMove : MonoBehaviour
         {
             float distanceChange = Input.GetAxis("Mouse ScrollWheel");
             float size = GetComponent<Camera>().orthographicSize;
-            //if (distanceChange > 0 && size > 30)
-            //{
-                //GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
-            //}
-            //else if (distanceChange < 0 && size  1)
-            //{
-                //GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
-            //}
-            GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
+            GetComponent<Camera>().orthographicSize = Mathf.Clamp(size - distanceChange * scrollSpeed, 1, 30);
+            //GetComponent<Camera>().orthographicSize -= distanceChange * scrollSpeed;
             
         }
 
