@@ -5,8 +5,10 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
 
+    public float speed;
     private float distance;
     public float scrollSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +30,14 @@ public class CameraMove : MonoBehaviour
             //Cursor.lockState = CursorLockMode.None;
         //else if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0))
             //Cursor.lockState = CursorLockMode.Locked;
+
+        float upDown = Input.GetAxis("Vertical") * speed;
+        float leftRight = Input.GetAxis("Horizontal") * speed;
+
+        upDown *= GetComponent<Camera>().orthographicSize * Time.deltaTime;
+        leftRight *= GetComponent<Camera>().orthographicSize * Time.deltaTime;
+        transform.Translate(leftRight, upDown,0);
+
+
     }
 }
