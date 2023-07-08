@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public CameraMove camera;
+    public new CameraMove camera;
     public bool is_Selected = false;
     private Vector3 mouseWorldPos;
     //public Vector3 position = transform.position;
