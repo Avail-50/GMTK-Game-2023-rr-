@@ -7,7 +7,12 @@ public class HeroController : MonoBehaviour
     public int maxHealth;
     public int health;
     [SerializeField] FloatingHealth healthBar;
-    
+    private BoxCollider2D aim;
+    public Transform enemy;
+    public float counter = 0;
+    public float force;
+    private Rigidbody2D rb2D;
+    private EnemyController dealDamage;
     //[SerializeField] Camera camera;
     //[SerializeField] Transform hero;
 
@@ -15,8 +20,8 @@ public class HeroController : MonoBehaviour
     private void Awake()
     {
         healthBar = GetComponentInChildren<FloatingHealth>();
-        
-        
+        dealDamage = enemy.GetComponent<EnemyController>();
+        rb2D = enemy.GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
