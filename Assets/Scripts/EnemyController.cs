@@ -109,7 +109,7 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Died");
+        Debug.Log("Enemy Died");
     }
 
 }
