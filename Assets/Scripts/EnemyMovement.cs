@@ -5,13 +5,11 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform bigCharacter;
+    public HeroController bigCharacter;
     public int force;
     private Rigidbody2D rb2D;
     private NavMeshAgent navMeshAgent;
-    [SerializeField] FloatingHealth healthBar;
-
-    [SerializeField] HeroController dealDamage;
+    private FloatingHealth healthBar;
 
     public int attack;
 
@@ -30,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         healthBar = GetComponentInChildren<FloatingHealth>();
-        dealDamage = bigCharacter.GetComponent<HeroController>();
+        bigCharacter = FindObjectOfType<HeroController>();
         rb2D = bigCharacter.GetComponent<Rigidbody2D>();
     }
     
@@ -107,8 +105,8 @@ public class EnemyMovement : MonoBehaviour
         direction.Normalize();
         
         rb2D.AddForce(direction * force);
-        dealDamage.OnDamaged(attack);
 
+        bigCharacter.OnDamaged(attack);
     }
 
     public void OnDamaged(int damageTaken)

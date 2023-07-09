@@ -128,7 +128,7 @@ Transform:
   - {fileID: 4388880000621526350}
   - {fileID: 7093753219246121678}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1884486206399597520
 SpriteRenderer:
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   health: 50
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4893747005406133075}
 --- !u!1001 &4996413619174382612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -387,3 +387,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8772656578048074074, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
   m_PrefabInstance: {fileID: 4996413619174382612}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4893747005406133075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 485482005388928839, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
+  m_PrefabInstance: {fileID: 4996413619174382612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c48fad99d43694f97ad13cac40c1b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -39,7 +39,7 @@ Transform:
   m_Children:
   - {fileID: 3561258169888603205}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8743715781829241592
 SpriteRenderer:
@@ -273,8 +273,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.45
-  m_Speed: 3.5
-  m_Acceleration: 50
+  m_Speed: 5
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 0
   m_StoppingDistance: 0
@@ -282,7 +282,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &6363915293016982387
@@ -299,8 +299,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bigCharacter: {fileID: 0}
   force: 8
-  healthBar: {fileID: 0}
-  dealDamage: {fileID: 0}
   attack: 1
   maxHealth: 10
   health: 10
