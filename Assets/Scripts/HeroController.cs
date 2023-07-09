@@ -9,6 +9,12 @@ public class HeroController : MonoBehaviour
     public GameObject weaponHitboxPrefab;
     private Collider2D weaponHitbox;
 
+    public float counter = 4f;
+    public float maxCounter = 4f;
+    [SerializeField] FloatingStamina staminaBar;
+
+    private GameObject child;
+
     public int attackDamage;
     public float attackForce;
     public int maxHealth;
@@ -20,8 +26,13 @@ public class HeroController : MonoBehaviour
 
     private void Awake()
     {
+        health = maxHealth;
         healthBar = GetComponentInChildren<FloatingHealth>();
         weaponHitbox = Instantiate(weaponHitboxPrefab, transform).GetComponent<Collider2D>();
+        counter = maxCounter;
+        staminaBar = GetComponentInChildren<FloatingStamina>();
+
+        child = transform.Find("Aim").gameObject;
     }
 
     // Start is called before the first frame update
@@ -45,6 +56,23 @@ public class HeroController : MonoBehaviour
         closestEnemy = enemies.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude).First();
         if (closestEnemy == null) return;
         weaponHitbox.transform.rotation = Quaternion.LookRotation(Vector3.forward, closestEnemy.transform.position - transform.position);
+        //if (counter > 0)
+        //   counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);
+        //transform.rotation = camera.transform.rotation;
+        //transform.position = target.transform.position + new(0, 75f, 0);
+        AimAndAttack aimAndAttack = child.GetComponent<AimAndAttack>();
+
+        if (aimAndAttack.onAttackCalled == true)
+        {
+            counter = 0;
+            staminaBar.UpdateStaminaBar(counter, maxCounter);
+            aimAndAttack.onAttackCalled = false;
+        }            
+        else if (counter < maxCounter)
+        {
+            counter = Mathf.Clamp(counter + Time.deltaTime, 0f, maxCounter);
+            staminaBar.UpdateStaminaBar(counter, maxCounter);
+        }
     }
 
     void OnAttack()
@@ -77,6 +105,7 @@ public class HeroController : MonoBehaviour
     void Die()
     {
         Debug.Log("Hero Died");
+        Destroy(gameObject);
     }
 
 }

@@ -5,10 +5,7 @@
 # Sunday Plans
   
 - Controls:
-     - death
      - win condition & end
-     - stamina bar for big lad
-     - items drop to increase attack
 
 <ins>   Extras:   </ins>
 - Intro / Start

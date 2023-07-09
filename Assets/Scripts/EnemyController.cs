@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 mouseWorldPos;
     private float counter;
+
+    public GameObject prefab;
     
     private void Awake()
     {
@@ -47,6 +49,11 @@ public class EnemyController : MonoBehaviour
         {
             mouseWorldPos = new(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
             //Debug.Log(mouseWorldPos);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            is_Selected = false;
         }
 
         //Debug.Log(mouseWorldPos);
@@ -107,9 +114,16 @@ public class EnemyController : MonoBehaviour
             Die();
     }
 
+    public void OnCollect(int buff)
+    {
+        attack += buff;
+    }
+
     void Die()
     {
-        Debug.Log("Enemy Died");
+        GameObject AttackUp = Instantiate(prefab, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 
 }

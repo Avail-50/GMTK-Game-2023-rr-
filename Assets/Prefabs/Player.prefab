@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 143736930, guid: 43b738f37dd135d4cacce11cd2cf4ae1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -315,6 +315,18 @@ PrefabInstance:
       propertyPath: hero
       value: 
       objectReference: {fileID: 6826155897417288976}
+    - target: {fileID: 4316013990028572033, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316013990028572033, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316013990028572033, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9058824
+      objectReference: {fileID: 0}
     - target: {fileID: 5788496215022865041, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
       propertyPath: m_Name
       value: Canvas
