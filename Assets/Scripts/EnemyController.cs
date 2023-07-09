@@ -6,30 +6,26 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public HeroController bigCharacter;
-    public int force;
-    private Rigidbody2D rb2D;
+    private Rigidbody2D heroRb2D;
     private NavMeshAgent navMeshAgent;
     private FloatingHealth healthBar;
 
-    public int attack;
-
+    public int attackDamage;
+    public float attackForce;
     public int maxHealth;
-    public int health;
-    //public CameraMove camera;
-
-    public bool is_Selected = false;
-    private Vector3 mouseWorldPos;
-    //public Vector3 position = transform.position;
     public float speedspeedspeed;
-    // Start is called before the first frame update
 
-    public float counter;
+    [SerializeField] int health;
+    public bool isSelected = false;
+
+    private Vector3 mouseWorldPos;
+    private float counter;
     
     private void Awake()
     {
         healthBar = GetComponentInChildren<FloatingHealth>();
         bigCharacter = FindObjectOfType<HeroController>();
-        rb2D = bigCharacter.GetComponent<Rigidbody2D>();
+        heroRb2D = bigCharacter.GetComponent<Rigidbody2D>();
     }
     
        
@@ -47,7 +43,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && is_Selected)
+        if (Input.GetButtonDown("Fire1") && isSelected)
         {
             mouseWorldPos = new(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
             //Debug.Log(mouseWorldPos);
@@ -70,43 +66,37 @@ public class EnemyController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            if (is_Selected)
-                is_Selected = false;
+            if (isSelected)
+                isSelected = false;
             //Vector3 mouseWorldPos = new(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
             //if (Mathf.Abs((mouseWorldPos - GetComponent<EnemyMovement>().position).x) < 5 && Mathf.Abs((mouseWorldPos - GetComponent<EnemyMovement>().position).y) < 5)
             //{
             //    GetComponent<EnemyMovement>().is_Selected = true;
 
             //}
-            else if (!is_Selected)
-                is_Selected = true;
+            else if (!isSelected)
+                isSelected = true;
         }
     }
 
-    void OnTriggerStay2D(Collider2D bigCharacter)
+    void OnTriggerStay2D(Collider2D other)
     {
-
-        if (counter == 0)
+        if (!other.isTrigger && counter == 0)
         {
             OnAttack();
             counter = 2f;
         }
-
-
-
     }
 
     void OnAttack()
     {
-        Debug.Log("Attack");
-
         //adds force to rigidbodies
         Vector3 direction = bigCharacter.transform.position - transform.position;        
         direction.Normalize();
         
-        rb2D.AddForce(direction * force);
+        heroRb2D.AddForce(direction * attackForce);
 
-        bigCharacter.OnDamaged(attack);
+        bigCharacter.OnDamaged(attackDamage);
     }
 
     public void OnDamaged(int damageTaken)

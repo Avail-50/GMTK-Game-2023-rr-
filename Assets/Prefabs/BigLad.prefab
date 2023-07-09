@@ -269,6 +269,9 @@ MonoBehaviour:
   maxHealth: 50
   health: 50
   healthBar: {fileID: 4893747005406133075}
+  weaponHitboxPrefab: {fileID: 8744976242424233077, guid: 7ee08fd84afb39e4a8aded98dd677826, type: 3}
+  counter: 0
+  attackForce: 1000
 --- !u!1001 &4996413619174382612
 PrefabInstance:
   m_ObjectHideFlags: 0
