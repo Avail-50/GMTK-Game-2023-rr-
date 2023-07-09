@@ -17,7 +17,7 @@ public class SceneController : MonoBehaviour
 
     public int width;
     public int height;
-    public int seed;
+    //public int seed;
     public int level;
     public int spaceX;
     public int spaceY;
@@ -29,19 +29,20 @@ public class SceneController : MonoBehaviour
     {
         int number_of_players = level + 4;
 
-        map = new(width, height, seed, level, spaceX, spaceY);
-        for (int x = 0; x < width; x++)
+        System.Random rand = new();
+
+        map = new(width, height, rand.Next(), level, spaceX, spaceY);
+        for (int x = -1; x <= width; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = -1; y <= height; y++)
             {
-                if (map.tiles[x, y])
+                if (x < 0 || x >= width || y < 0 || y >= height || map.tiles[x, y])
                 {
                     tilemap.SetTile(new Vector3Int(x - map.offsetX, y - map.offsetY, 0), wallTile);
                 }   
             }
         }
         navMeshSurface.BuildNavMesh();
-        System.Random rand = new();
         HeroController hero = Instantiate(heroPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<HeroController>();
         foreach (Vector2 playerSpawnPos in map.playerSpawnPoses.OrderBy(x => rand.Next()).Take(number_of_players))
         {
