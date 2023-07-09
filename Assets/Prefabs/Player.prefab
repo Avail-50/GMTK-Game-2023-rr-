@@ -303,6 +303,7 @@ MonoBehaviour:
   speedspeedspeed: 5
   health: 10
   isSelected: 0
+  powerupPrefab: {fileID: 6492078424794100366, guid: 75f18bb5b2ccfd641bbbae22ba150005, type: 3}
 --- !u!1001 &5247429974379879711
 PrefabInstance:
   m_ObjectHideFlags: 0

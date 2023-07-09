@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collect : MonoBehaviour
 {
-    private EnemyMovement onCollect;
+    private EnemyController onCollect;
     private int buff = 1;
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class Collect : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D obj)
     {
-        onCollect = obj.gameObject.GetComponent<EnemyMovement>();
+        onCollect = obj.gameObject.GetComponent<EnemyController>();
 
         onCollect.OnCollect(buff);
         Destroy(gameObject);

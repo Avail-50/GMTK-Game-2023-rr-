@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 mouseWorldPos;
     private float counter;
 
-    public GameObject prefab;
+    public GameObject powerupPrefab;
     
     private void Awake()
     {
@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            is_Selected = false;
+            isSelected = false;
         }
 
         //Debug.Log(mouseWorldPos);
@@ -78,7 +78,7 @@ public class EnemyController : MonoBehaviour
             //Vector3 mouseWorldPos = new(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
             //if (Mathf.Abs((mouseWorldPos - GetComponent<EnemyMovement>().position).x) < 5 && Mathf.Abs((mouseWorldPos - GetComponent<EnemyMovement>().position).y) < 5)
             //{
-            //    GetComponent<EnemyMovement>().is_Selected = true;
+            //    GetComponent<EnemyMovement>().isSelected = true;
 
             //}
             else if (!isSelected)
@@ -116,12 +116,12 @@ public class EnemyController : MonoBehaviour
 
     public void OnCollect(int buff)
     {
-        attack += buff;
+        attackDamage += buff;
     }
 
     void Die()
     {
-        GameObject AttackUp = Instantiate(prefab, transform.position, Quaternion.identity);
+        GameObject AttackUp = Instantiate(powerupPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }

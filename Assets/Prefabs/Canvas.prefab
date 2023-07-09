@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 6711087651511130940}
-  camera: {fileID: 0}
   hero: {fileID: 0}
 --- !u!1818360609 &8015787618403284844
 RotationConstraint:
@@ -323,7 +322,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3180192628503755774
 MonoBehaviour:
   m_ObjectHideFlags: 0

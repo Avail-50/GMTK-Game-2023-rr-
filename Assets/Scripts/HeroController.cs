@@ -9,8 +9,8 @@ public class HeroController : MonoBehaviour
     public GameObject weaponHitboxPrefab;
     private Collider2D weaponHitbox;
 
-    public float counter = 4f;
-    public float maxCounter = 4f;
+    public float maxCounter;
+    private float counter;
     [SerializeField] FloatingStamina staminaBar;
 
     private GameObject child;
@@ -18,11 +18,10 @@ public class HeroController : MonoBehaviour
     public int attackDamage;
     public float attackForce;
     public int maxHealth;
+    private int health;
 
-    [SerializeField] int health;
 
     private EnemyController closestEnemy;
-    private float counter = 0;
 
     private void Awake()
     {
@@ -31,8 +30,6 @@ public class HeroController : MonoBehaviour
         weaponHitbox = Instantiate(weaponHitboxPrefab, transform).GetComponent<Collider2D>();
         counter = maxCounter;
         staminaBar = GetComponentInChildren<FloatingStamina>();
-
-        child = transform.Find("Aim").gameObject;
     }
 
     // Start is called before the first frame update
@@ -47,8 +44,12 @@ public class HeroController : MonoBehaviour
         //aim.transform.rotation = enemy;
         //Vector3 newDirection = Vector3.RotateTowards(transform.forward, enemy.transform.position, singleStep, 0.0f);
 
-        if (counter > 0)
-            counter = Mathf.Clamp(counter - Time.deltaTime, 0f, float.PositiveInfinity);
+        if (counter < maxCounter)
+        {
+            counter = Mathf.Clamp(counter + Time.deltaTime, 0f, maxCounter);
+            staminaBar.UpdateStaminaBar(counter, maxCounter);
+        }
+
         //transform.rotation = camera.transform.rotation;
         //transform.position = target.transform.position + new(0, 75f, 0);
 
@@ -56,23 +57,6 @@ public class HeroController : MonoBehaviour
         closestEnemy = enemies.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude).First();
         if (closestEnemy == null) return;
         weaponHitbox.transform.rotation = Quaternion.LookRotation(Vector3.forward, closestEnemy.transform.position - transform.position);
-        //if (counter > 0)
-        //   counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);
-        //transform.rotation = camera.transform.rotation;
-        //transform.position = target.transform.position + new(0, 75f, 0);
-        AimAndAttack aimAndAttack = child.GetComponent<AimAndAttack>();
-
-        if (aimAndAttack.onAttackCalled == true)
-        {
-            counter = 0;
-            staminaBar.UpdateStaminaBar(counter, maxCounter);
-            aimAndAttack.onAttackCalled = false;
-        }            
-        else if (counter < maxCounter)
-        {
-            counter = Mathf.Clamp(counter + Time.deltaTime, 0f, maxCounter);
-            staminaBar.UpdateStaminaBar(counter, maxCounter);
-        }
     }
 
     void OnAttack()
@@ -83,14 +67,16 @@ public class HeroController : MonoBehaviour
 
         closestEnemy.GetComponent<Rigidbody2D>().AddForce(direction * attackForce);
         closestEnemy.OnDamaged(attackDamage);
+
+        staminaBar.UpdateStaminaBar(counter, maxCounter);
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (!other.isTrigger && counter == 0)
+        if (!other.isTrigger && counter == maxCounter)
         {
             OnAttack();
-            counter = 2f;
+            counter = 0f;
         }
     }
 
