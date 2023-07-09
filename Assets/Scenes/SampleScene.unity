@@ -1183,6 +1183,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1674090004204491810, guid: 3b4d3e1dfb146874a82da1e7c4db01cc, type: 3}
+      propertyPath: maxHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884486206399597520, guid: 3b4d3e1dfb146874a82da1e7c4db01cc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 530925601, guid: 43b738f37dd135d4cacce11cd2cf4ae1, type: 3}
     - target: {fileID: 2335619752883873290, guid: 3b4d3e1dfb146874a82da1e7c4db01cc, type: 3}
       propertyPath: m_RootOrder
       value: 5
