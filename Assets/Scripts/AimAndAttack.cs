@@ -7,25 +7,32 @@ public class AimAndAttack : MonoBehaviour
 {
     private BoxCollider2D aim;
     private Transform enemy;
-    public float counter = 4f;
+    
     public float force;
     private Rigidbody2D rb2D;
     private EnemyMovement dealDamage;
     //private bool targetLocked = false;
     public int attack;
+    public bool onAttackCalled = false;
+
+    //[SerializeField] FloatingStamina staminaBar;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        //dealDamage = enemy.GetComponent<EnemyMovement>();
-        //rb2D = enemy.GetComponent<Rigidbody2D>();
+        //counter = maxCounter;
+        //staminaBar = GetComponentInChildren<FloatingStamina>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (counter > 0)
-            counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);
+        //if (counter < maxCounter)
+        //{
+        //    counter = Mathf.Clamp(counter + Time.deltaTime, 0f, maxCounter);
+        //    staminaBar.UpdateStaminaBar(counter, maxCounter);
+        //
+        //}
 
         //if (enemy == null)
         //{
@@ -58,11 +65,13 @@ public class AimAndAttack : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
 
-        if (counter == 0)
-        {
-            OnAttack();
-            counter = 4f;
-        }
+        //if (counter == 4)
+        //{
+        //    OnAttack();
+        //    onAttackCalled = true;
+        //    //counter = 0f;
+        //    //staminaBar.UpdateStaminaBar(counter, maxCounter);
+        //}
 
     }
 

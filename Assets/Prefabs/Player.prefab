@@ -39,7 +39,7 @@ Transform:
   m_Children:
   - {fileID: 8023697661422635106}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8743715781829241592
 SpriteRenderer:
@@ -320,6 +320,18 @@ PrefabInstance:
       propertyPath: hero
       value: 
       objectReference: {fileID: 6826155897417288976}
+    - target: {fileID: 4316013990028572033, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316013990028572033, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316013990028572033, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9058824
+      objectReference: {fileID: 0}
     - target: {fileID: 5788496215022865041, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
       propertyPath: m_Name
       value: Canvas
