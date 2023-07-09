@@ -159,7 +159,6 @@ MonoBehaviour:
   heroPrefab: {fileID: 8782348019739261055, guid: 3b4d3e1dfb146874a82da1e7c4db01cc, type: 3}
   width: 50
   height: 50
-  seed: 123
   level: 0
   spaceX: 2
   spaceY: 2

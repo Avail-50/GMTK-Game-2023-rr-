@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public HeroController bigCharacter;
+    private HeroController hero;
     private Rigidbody2D heroRb2D;
     private NavMeshAgent navMeshAgent;
     private FloatingHealth healthBar;
@@ -24,8 +24,8 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         healthBar = GetComponentInChildren<FloatingHealth>();
-        bigCharacter = FindObjectOfType<HeroController>();
-        heroRb2D = bigCharacter.GetComponent<Rigidbody2D>();
+        hero = FindObjectOfType<HeroController>();
+        heroRb2D = hero.GetComponent<Rigidbody2D>();
     }
     
        
@@ -91,12 +91,12 @@ public class EnemyController : MonoBehaviour
     void OnAttack()
     {
         //adds force to rigidbodies
-        Vector3 direction = bigCharacter.transform.position - transform.position;        
+        Vector3 direction = hero.transform.position - transform.position;        
         direction.Normalize();
         
         heroRb2D.AddForce(direction * attackForce);
 
-        bigCharacter.OnDamaged(attackDamage);
+        hero.OnDamaged(attackDamage);
     }
 
     public void OnDamaged(int damageTaken)

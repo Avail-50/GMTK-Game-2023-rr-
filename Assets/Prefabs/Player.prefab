@@ -297,14 +297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2fd434a62cadb4cb7e98d086a622d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bigCharacter: {fileID: 0}
+  attackDamage: 1
   attackForce: 100
-  attack: 1
   maxHealth: 10
-  health: 10
-  is_Selected: 0
   speedspeedspeed: 5
-  counter: 0
+  health: 10
+  isSelected: 0
 --- !u!1001 &5247429974379879711
 PrefabInstance:
   m_ObjectHideFlags: 0
