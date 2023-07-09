@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class FloatingHealth : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-    [SerializeField] private Camera camera;
     [SerializeField] private Transform hero;
 
     //private Vector3 
@@ -20,7 +19,6 @@ public class FloatingHealth : MonoBehaviour
     void Update()
     {
         transform.eulerAngles = new Vector3(0, 0, 0);
-        //transform.rotation = camera.transform.rotation;
         transform.position = hero.transform.position + new Vector3(0f, 0.75f, 0f);
     }
 }
