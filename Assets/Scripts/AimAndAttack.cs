@@ -14,12 +14,17 @@ public class AimAndAttack : MonoBehaviour
     //private bool targetLocked = false;
     public int attack;
     public bool onAttackCalled = false;
+    public GameObject parent;
+    private HeroController heroController;
 
     //[SerializeField] FloatingStamina staminaBar;
 
     // Start is called before the first frame update
     void Awake()
     {
+
+        parent = transform.parent.gameObject;
+        heroController = parent.GetComponent<HeroController>();
         //counter = maxCounter;
         //staminaBar = GetComponentInChildren<FloatingStamina>();
     }
@@ -37,15 +42,6 @@ public class AimAndAttack : MonoBehaviour
         //if (enemy == null)
         //{
         DetectNearestEnemy();
-        //}
-        //else
-        //{
-        //    
-        //    Quaternion rotation = Quaternion.LookRotation(Vector3.forward, enemy.position - transform.position);
-        //    transform.rotation = rotation;
-        //    rb2D = enemy.GetComponent<Rigidbody2D>();
-        //    dealDamage = enemy.GetComponent<EnemyMovement>();
-        //}
 
     }
 
@@ -60,18 +56,20 @@ public class AimAndAttack : MonoBehaviour
         rb2D.AddForce(direction * force);
 
         dealDamage.OnDamaged(attack);
+
+
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
 
-        //if (counter == 4)
-        //{
-        //    OnAttack();
-        //    onAttackCalled = true;
-        //    //counter = 0f;
-        //    //staminaBar.UpdateStaminaBar(counter, maxCounter);
-        //}
+        if (heroController.counter == 4)
+        {
+            OnAttack();
+            onAttackCalled = true;
+            //counter = 0f;
+            //staminaBar.UpdateStaminaBar(counter, maxCounter);
+        }
 
     }
 
