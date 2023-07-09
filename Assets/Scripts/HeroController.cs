@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class HeroController : MonoBehaviour
 {
     [SerializeField] FloatingHealth healthBar;
     public GameObject weaponHitboxPrefab;
     private Collider2D weaponHitbox;
+    private NavMeshAgent navMeshAgent;
 
     public float maxCounter;
     private float counter;
@@ -31,6 +33,10 @@ public class HeroController : MonoBehaviour
         weaponHitbox = Instantiate(weaponHitboxPrefab, transform).GetComponent<Collider2D>();
         counter = maxCounter;
         staminaBar = GetComponentInChildren<FloatingStamina>();
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
 
     // Start is called before the first frame update
@@ -56,7 +62,11 @@ public class HeroController : MonoBehaviour
 
         EnemyController[] enemies = FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
         closestEnemy = enemies.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude).First();
-        if (closestEnemy == null) return;
+        if (closestEnemy == null)
+        {
+            SceneManager.LoadScene(0);
+        }
+        navMeshAgent.SetDestination(closestEnemy.transform.position);
         weaponHitbox.transform.rotation = Quaternion.LookRotation(Vector3.forward, closestEnemy.transform.position - transform.position);
     }
 
