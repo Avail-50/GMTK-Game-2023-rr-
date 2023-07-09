@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeroController : MonoBehaviour
 {
@@ -71,8 +72,9 @@ public class HeroController : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Hero Died");
+        //Debug.Log("Hero Died");
         Destroy(gameObject);
+        SceneManager.LoadScene(1);
     }
 
 }
