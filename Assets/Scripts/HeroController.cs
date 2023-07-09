@@ -12,7 +12,7 @@ public class HeroController : MonoBehaviour
     public float counter = 0;
     public float force;
     private Rigidbody2D rb2D;
-    private EnemyMovement dealDamage;
+    private EnemyController dealDamage;
     //[SerializeField] Camera camera;
     //[SerializeField] Transform hero;
 
@@ -20,7 +20,7 @@ public class HeroController : MonoBehaviour
     private void Awake()
     {
         healthBar = GetComponentInChildren<FloatingHealth>();
-        dealDamage = enemy.GetComponent<EnemyMovement>();
+        dealDamage = enemy.GetComponent<EnemyController>();
         rb2D = enemy.GetComponent<Rigidbody2D>();
     }
 
