@@ -2,15 +2,15 @@
 
 <ins> 2d Top Down </ins> 
 
-# Saturday Plans
-- Procedural generation -- Harvey
+# Sunday Plans
   
 - Controls:
-  - Attacking (finish)
      - death
-     - win condition
-   
-death
+     - win condition & end
+     - stamina bar for big lad
+     - items drop to increase attack
+
+<ins>   Extras:   </ins>
+- Intro / Start
 
 
-win
