@@ -231,7 +231,7 @@ CircleCollider2D:
     m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 1335
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bigCharacter: {fileID: 0}
-  force: 8
+  attackForce: 100
   attack: 1
   maxHealth: 10
   health: 10
