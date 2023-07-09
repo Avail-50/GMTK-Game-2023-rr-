@@ -31,8 +31,8 @@ public class HeroController : MonoBehaviour
         //aim.transform.rotation = enemy;
         //Vector3 newDirection = Vector3.RotateTowards(transform.forward, enemy.transform.position, singleStep, 0.0f);
 
-        //if (counter > 0)
-         //   counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);
+        if (counter > 0)
+            counter = Mathf.Clamp(counter - Time.deltaTime, 0f, float.PositiveInfinity);
         //transform.rotation = camera.transform.rotation;
         //transform.position = target.transform.position + new(0, 75f, 0);
     }

@@ -60,7 +60,7 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent.speed = speedspeedspeed;// * Time.deltaTime;
 
         if (counter > 0)
-            counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);
+            counter = Mathf.Clamp(counter - Time.deltaTime, 0f, float.PositiveInfinity);
 
     }
 
