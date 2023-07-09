@@ -13,6 +13,7 @@ public class SceneController : MonoBehaviour
     public NavMeshPlus.Components.NavMeshSurface navMeshSurface;
 
     public GameObject playerPrefab;
+    public GameObject heroPrefab;
 
     public int width;
     public int height;
@@ -41,9 +42,10 @@ public class SceneController : MonoBehaviour
         }
         navMeshSurface.BuildNavMesh();
         System.Random rand = new();
+        HeroController hero = Instantiate(heroPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<HeroController>();
         foreach (Vector2 playerSpawnPos in map.playerSpawnPoses.OrderBy(x => rand.Next()).Take(number_of_players))
         {
-            Instantiate(playerPrefab, new Vector3(playerSpawnPos.x, playerSpawnPos.y, 0), Quaternion.identity);
+            Instantiate(playerPrefab, new Vector3(playerSpawnPos.x, playerSpawnPos.y, 0), Quaternion.identity).GetComponent<EnemyMovement>().bigCharacter = hero;
         }
     }
 
