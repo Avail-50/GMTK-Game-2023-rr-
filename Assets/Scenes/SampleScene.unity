@@ -1231,6 +1231,14 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6691058055846435268, guid: 3b4d3e1dfb146874a82da1e7c4db01cc, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691058055846435268, guid: 3b4d3e1dfb146874a82da1e7c4db01cc, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 8782348019739261055, guid: 3b4d3e1dfb146874a82da1e7c4db01cc, type: 3}
       propertyPath: m_Name
       value: BigLad

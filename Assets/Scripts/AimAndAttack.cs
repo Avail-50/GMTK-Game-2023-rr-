@@ -11,7 +11,7 @@ public class AimAndAttack : MonoBehaviour
     public float force;
     private Rigidbody2D rb2D;
     private EnemyMovement dealDamage;
-    private bool targetLocked = false;
+    //private bool targetLocked = false;
     public int attack;
 
     // Start is called before the first frame update
@@ -27,18 +27,18 @@ public class AimAndAttack : MonoBehaviour
         if (counter > 0)
             counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);
 
-        if (!targetLocked)
-        {
-            DetectNearestEnemy();
-        }
-        else
-        {
-            
-            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, enemy.position - transform.position);
-            transform.rotation = rotation;
-            rb2D = enemy.GetComponent<Rigidbody2D>();
-            dealDamage = enemy.GetComponent<EnemyMovement>();
-        }
+        //if (enemy == null)
+        //{
+        DetectNearestEnemy();
+        //}
+        //else
+        //{
+        //    
+        //    Quaternion rotation = Quaternion.LookRotation(Vector3.forward, enemy.position - transform.position);
+        //    transform.rotation = rotation;
+        //    rb2D = enemy.GetComponent<Rigidbody2D>();
+        //    dealDamage = enemy.GetComponent<EnemyMovement>();
+        //}
 
     }
 
@@ -72,7 +72,12 @@ public class AimAndAttack : MonoBehaviour
         EnemyMovement nearestEnemy = foundEnemies.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude).First();
         //Collider[] nearbyRigidbodies = Physics.OverlapSphere(transform.position, radius);
         //if (nearbyRigidbodies != null)
-        targetLocked = true;
+        //targetLocked = true;
         enemy = nearestEnemy.transform;
+
+        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, enemy.position - transform.position);
+        transform.rotation = rotation;
+        rb2D = enemy.GetComponent<Rigidbody2D>();
+        dealDamage = enemy.GetComponent<EnemyMovement>();
     }
 }

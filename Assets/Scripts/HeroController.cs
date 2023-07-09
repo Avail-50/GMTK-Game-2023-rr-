@@ -52,6 +52,7 @@ public class HeroController : MonoBehaviour
     void Die()
     {
         Debug.Log("Hero Died");
+        Destroy(gameObject);
     }
 
 }

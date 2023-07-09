@@ -26,6 +26,8 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
 
     public float counter;
+
+    public GameObject prefab;
     
     private void Awake()
     {
@@ -53,6 +55,11 @@ public class EnemyMovement : MonoBehaviour
         {
             mouseWorldPos = new(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
             //Debug.Log(mouseWorldPos);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            is_Selected = false;
         }
 
         //Debug.Log(mouseWorldPos);
@@ -119,9 +126,17 @@ public class EnemyMovement : MonoBehaviour
             Die();
     }
 
+    public void OnCollect(int buff)
+    {
+        attack += buff;
+    }
+
     void Die()
     {
-        Debug.Log("Died");
+        GameObject AttackUp = Instantiate(prefab, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
+
     }
 
 }

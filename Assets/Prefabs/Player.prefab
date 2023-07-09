@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 143736930, guid: 43b738f37dd135d4cacce11cd2cf4ae1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2fd434a62cadb4cb7e98d086a622d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bigCharacter: {fileID: 0}
+  bigCharacter: {fileID: 2335619752883873290, guid: 3b4d3e1dfb146874a82da1e7c4db01cc, type: 3}
   force: 8
   healthBar: {fileID: 0}
   dealDamage: {fileID: 0}
@@ -307,6 +307,7 @@ MonoBehaviour:
   is_Selected: 0
   speedspeedspeed: 5
   counter: 0
+  prefab: {fileID: 6492078424794100366, guid: 75f18bb5b2ccfd641bbbae22ba150005, type: 3}
 --- !u!1001 &1650386947995478328
 PrefabInstance:
   m_ObjectHideFlags: 0
