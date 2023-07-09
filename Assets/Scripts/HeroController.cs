@@ -7,12 +7,7 @@ public class HeroController : MonoBehaviour
     public int maxHealth;
     public int health;
     [SerializeField] FloatingHealth healthBar;
-    private BoxCollider2D aim;
-    public Transform enemy;
-    public float counter = 0;
-    public float force;
-    private Rigidbody2D rb2D;
-    private EnemyMovement dealDamage;
+    
     //[SerializeField] Camera camera;
     //[SerializeField] Transform hero;
 
@@ -20,8 +15,8 @@ public class HeroController : MonoBehaviour
     private void Awake()
     {
         healthBar = GetComponentInChildren<FloatingHealth>();
-        dealDamage = enemy.GetComponent<EnemyMovement>();
-        rb2D = enemy.GetComponent<Rigidbody2D>();
+        
+        
     }
 
     // Start is called before the first frame update
@@ -36,36 +31,15 @@ public class HeroController : MonoBehaviour
         //aim.transform.rotation = enemy;
         //Vector3 newDirection = Vector3.RotateTowards(transform.forward, enemy.transform.position, singleStep, 0.0f);
 
-        if (counter > 0)
-            counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);
+        //if (counter > 0)
+         //   counter = Mathf.Clamp(counter - Time.deltaTime, 0f, 10f);
         //transform.rotation = camera.transform.rotation;
         //transform.position = target.transform.position + new(0, 75f, 0);
     }
 
-    void OnAttack()
-    {
-        Debug.Log("Attack");
+    
 
-        //adds force to rigidbodies
-        Vector3 direction = enemy.transform.position - transform.position;
-        direction.Normalize();
-
-        rb2D.AddForce(direction * force);
-
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-
-        if (counter == 0)
-        {
-            OnAttack();
-            counter = 2f;
-        }
-
-
-
-    }
+    
 
     public void OnDamaged(int damageTaken)
     {
