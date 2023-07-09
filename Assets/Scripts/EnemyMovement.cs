@@ -90,7 +90,6 @@ public class EnemyMovement : MonoBehaviour
 
         if (counter == 0)
         {
-            Debug.Log("kljsgetbkluwetyilutg");
             OnAttack();
             counter = 2f;
         }
@@ -108,11 +107,11 @@ public class EnemyMovement : MonoBehaviour
         direction.Normalize();
         
         rb2D.AddForce(direction * force);
-
         dealDamage.OnDamaged(attack);
+
     }
 
-    void OnDamaged(int damageTaken)
+    public void OnDamaged(int damageTaken)
     {
         health -= damageTaken;
         healthBar.UpdateHealthBar(health, maxHealth);
