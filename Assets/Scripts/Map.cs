@@ -45,7 +45,7 @@ namespace Roguelike
             Rectangle entire = new(0, 0, width - 1, height - 1);
 
             int numrooms = (int)Mathf.Round(Gaussian(rand, 9, 1));
-            Debug.Log("numrooms : " + numrooms); // DEBUG
+            //Debug.Log("numrooms : " + numrooms); // DEBUG
 
             #region rooms
             List<Rectangle> rooms = new List<Rectangle>();

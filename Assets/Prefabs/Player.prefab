@@ -37,9 +37,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8023697661422635106}
+  - {fileID: 3561258169888603205}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8743715781829241592
 SpriteRenderer:
@@ -231,7 +231,7 @@ CircleCollider2D:
     m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 1335
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -273,8 +273,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.45
-  m_Speed: 3.5
-  m_Acceleration: 50
+  m_Speed: 5
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 0
   m_StoppingDistance: 0
@@ -282,7 +282,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &6363915293016982387
@@ -297,17 +297,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2fd434a62cadb4cb7e98d086a622d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bigCharacter: {fileID: 0}
-  force: 8
-  healthBar: {fileID: 0}
-  dealDamage: {fileID: 0}
-  attack: 1
+  attackDamage: 1
+  attackForce: 100
   maxHealth: 10
-  health: 10
-  is_Selected: 0
   speedspeedspeed: 5
-  counter: 0
---- !u!1001 &1650386947995478328
+  health: 10
+  isSelected: 0
+--- !u!1001 &5247429974379879711
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -420,8 +416,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
---- !u!224 &8023697661422635106 stripped
+--- !u!224 &3561258169888603205 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8772656578048074074, guid: f0b4717bb6ff7b443b4fdfb4e2eb8041, type: 3}
-  m_PrefabInstance: {fileID: 1650386947995478328}
+  m_PrefabInstance: {fileID: 5247429974379879711}
   m_PrefabAsset: {fileID: 0}
